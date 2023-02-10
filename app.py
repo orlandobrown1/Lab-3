@@ -60,3 +60,5 @@ async def create_new_profile_by_data(request: Request):
     db["profile"].find_one({"last_updated":new_profiles.insert_last_updated})
 
     return created_profiles
+
+    
