@@ -19,7 +19,7 @@ app.add_middleware(
   allow_methods=["*"],
   allow_headers=["*"],  
 )
-client = motor.motor_asyncio.AsyncIOMotorClient("mongodb+srv://week4:Lb30oh1KEZTEVypf@cluster0.cklfqkn.mongodb.net/?retryWrites=true&w=majority")
+client = motor.motor_asyncio.AsyncIOMotorClient("mongodb+srv://orlandobrown:<password>@cluster0.qugvaa8.mongodb.net/?retryWrites=true&w=majority")
 db = client.water_tank
 
 pydantic.json.ENCODERS_BY_TYPE[ObjectId]= str
@@ -61,4 +61,3 @@ async def create_new_profile_by_data(request: Request):
 
     return created_profiles
 
-    
