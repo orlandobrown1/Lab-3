@@ -1,7 +1,6 @@
 from fastapi import FastAPI, Request
 from bson import ObjectId
-from fastapi.middleware.cors import
-CORSMiddleware
+from fastapi.middleware.cors import CORSMiddleware
 import motor.motor_asyncio
 import pydantic
 
@@ -65,4 +64,3 @@ async def create_new_profile_by_data(request: Request):
 async def retrive_tanks():
     tanks = await db["tank"].find().to_list(999)
     return tanks
-    
