@@ -50,7 +50,7 @@ async def create_new_profile(request: Request):
         ObjectId(data)})
         return profile
 
-@app.post("prfile/{data}")
+@app.post("profile/{data}")
 async def create_new_profile_by_data(request: Request):
     tank_object= await request.json()
 
@@ -61,3 +61,8 @@ async def create_new_profile_by_data(request: Request):
 
     return created_profiles
 
+@app.get("/data")
+async def retrive_tanks():
+    tanks = await db["tank"].find().to_list(999)
+    return tanks
+    
