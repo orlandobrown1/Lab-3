@@ -51,7 +51,7 @@ async def get_all_profiles_by_data(data:str):
 async def create_new_profile_by_data(request: Request):
     tank_object= await request.json()
 
-    new_profile= await db["profile"].insert_one(tank_objects)
+    new_profile= await db["profile"].insert_one(tank_object)
     created_profiles= await db["profile"].find_one({"_id":new_profile.inserted_id})
 
     return created_profiles
