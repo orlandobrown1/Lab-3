@@ -1,8 +1,9 @@
-from fastapi import FastAPI, Request
+from fastapi import FastAPI, Request, HTTPException 
 from bson import ObjectId
-from fastapi.middleware.cors import CORSMiddleware
+from fastapi.middleware.cors import CORSMiddleware 
 import motor.motor_asyncio
 import pydantic
+
 
 app = FastAPI()
 
