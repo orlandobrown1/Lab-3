@@ -68,9 +68,9 @@ async def delete_tank(id: str):
     if (found) is None:
         raise HTTPException(status_code=404, detail="item not found")
 
-        remove_tank= await db["tank"].delete_one({"_id": ObjectId(id)})
+    remove_tank= await db["tank"].delete_one({"_id": ObjectId(id)})
 
-        return {"message": "ITEM WAS DELETED"}
+    return {"message": "ITEM WAS DELETED"}
 
 
 @app.patch("/data/{id}")
@@ -78,11 +78,13 @@ async def do_update(id: str, request: Request):
     updated= await request.json()
     request= await db["tank"].update_one({"_id":ObjectId(id)}, {'$set': updated})
 
-    if result.modified_count == 1:
-        if(
-            updated_tank := await db["tank"].find_one({"_id": id})
-        ) is not None:
+    if result.modidied_count == 1: 
+     if(
+        updated_tank := await db["tank"].find_one({"_id": id})
+       ) is not None:
             return updated_tank
+
+
 
     else:
         raise HTTPException(status_code=404, detail="Item not found")
