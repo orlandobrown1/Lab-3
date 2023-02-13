@@ -1,4 +1,4 @@
-from fastapi import FastAPI, Request, HTTPException 
+from fastapi import FastAPI, Request, HTTPException  
 from bson import ObjectId
 from fastapi.middleware.cors import CORSMiddleware 
 import motor.motor_asyncio
@@ -81,7 +81,7 @@ async def do_update(id: str, request: Request):
     updated= await request.json()
     request= await db["tank"].update_one({"_id":ObjectId(id)}, {'$set': updated})
 
-    if result.modidied_count == 1: 
+    if request.modified_count == 1: 
      if(
         updated_tank := await db["tank"].find_one({"_id": id})
        ) is not None:
